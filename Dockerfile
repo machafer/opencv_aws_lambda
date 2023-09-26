@@ -16,7 +16,7 @@ RUN make altinstall
 # Install Python packages
 RUN mkdir /packages
 RUN mkdir -p /packages/opencv-python-3.11/python/lib/python3.11/site-packages
-RUN pip3.11 install opencv-python-headless -t /packages/opencv-python-3.11/python/lib/python3.11/site-packages
+RUN pip3.11 install opencv-python-headless  -t /packages/opencv-python-3.11/python/lib/python3.11/site-packages
 
 # Create zip files for Lambda Layer deployment
 WORKDIR /packages/opencv-python-3.11/
