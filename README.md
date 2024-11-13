@@ -6,7 +6,7 @@
 git clone https://github.com/machafer/opencv_aws_lambda
 cd opencv_aws_lambda
 docker build --tag=lambda-layer-factory:latest .
-docker run --rm -it -v $(pwd):/data lambda-layer-factory cp /packages/opencv-python-311.zip /data
+docker run --rm -it -v $(pwd):/data lambda-layer-factory cp /packages/opencv-python-312.zip /data
 
 ```
 
@@ -20,9 +20,9 @@ UPLOAD_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-pa
 accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
 s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
-aws s3 cp opencv-python-311.zip s3://$s3_deploy_bucket
+aws s3 cp opencv-python-312.zip s3://$s3_deploy_bucket
 
-aws lambda publish-layer-version --layer-name python-opencv-311 --description "OpenCV for Python 3.11" --content S3Bucket=$s3_deploy_bucket,S3Key=opencv-python-311.zip --compatible-runtimes python3.11
+aws lambda publish-layer-version --layer-name python-opencv-312 --description "OpenCV for Python 3.12" --content S3Bucket=$s3_deploy_bucket,S3Key=opencv-python-312.zip --compatible-runtimes python3.12
     
 ```
 
